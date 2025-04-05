@@ -1,0 +1,5 @@
+debfile
+ Architecture: any
+ Depends: ${misc:Depends}, libexample (>= 1.0)
+ Section: utils
+ Priority: optional

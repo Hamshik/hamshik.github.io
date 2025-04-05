@@ -1,0 +1,24 @@
+Architectures: all
+Codename: bookworm
+Components: main
+Date: Sat, 05 Apr 2025 12:23:00 +0000
+Description: none
+Label: aptgpgrepo
+Origin: hamshik
+Suite: bookworm
+MD5Sum:
+ 8b40b65dc0b221408a260e81feee9a49              161 Release
+ 4dd0b73c20e5b7bcc591cf7356612e60              421 main/binary-amd64/Packages
+ 1af4e29aadeb2d9c8979c9986f180e7d              326 main/binary-amd64/Packages.gz
+SHA1:
+ 455cd232b822250c3ef333ba71c008aef223a39d              161 Release
+ 55aa5f9f7283e770644af669949beb9b731afaf3              421 main/binary-amd64/Packages
+ 9eca2c08950059721ad1c1f4b93995f6d6e1055b              326 main/binary-amd64/Packages.gz
+SHA256:
+ f3d0683be20bad664de6d67fbbac1c0af87ec546d297ffa5403ea32d4572c79b              161 Release
+ 817531e725ee517ac2b209da1af2a7a15c3d61091f6e77ccc559388c162b0ee4              421 main/binary-amd64/Packages
+ e91084e0eada5cfae5fa76891a753c3804297e9e5644bcadd54ef95bf5fafeba              326 main/binary-amd64/Packages.gz
+SHA512:
+ 863c68c494f658f47e67136a5fb985f52337ff9bcf03ae1a37a8af4b4334b9e5b87bef371aa50806102f903ab739ad58e041d448622788489dfae704a829a7bf              161 Release
+ 7985e007e22f2639b05f5675dcf655ff84fbb1eb3e3734d3aecc2e2a0cb01a604d6d6085707e052e9c71964446024abafa2578b57d4a47819af4eb96907fdd6e              421 main/binary-amd64/Packages
+ 150b242f1057919aabaf7b62ebab0254140403b698ec052f6109b1d5e405120d2fb71c025657a0d6d18da5d8b9e7a074d9995416ae0d01d52c276c7df1d7b787              326 main/binary-amd64/Packages.gz

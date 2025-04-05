@@ -1,0 +1,11 @@
+Package: debfile
+Version: 1.0-1
+Architecture: amd64
+Maintainer: hamshik <hamshik.sbv3@gmail.com>
+Installed-Size: 24
+Filename: /home/hamshik/Hamshik.github.io/dist/pool/main/debfile_1.0-1_amd64.deb
+Size: 3104
+MD5sum: a811c3299f7ec467db91f69cd7fe7ab5
+SHA1: 7efe1f1b7ebc5a103e6fa455628294e4d207e91e
+SHA256: 4e1339a848e0a3ec117675e52fb51a05f2137d97404b5cf40d1539b9d5b2af3b
+Description: This folder is for sha256's package.gz.
