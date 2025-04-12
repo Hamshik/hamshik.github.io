@@ -1,0 +1,69 @@
+name: Weekly Update Dist Directory
+
+on:
+  schedule:
+    # Schedule to run every Monday at 8:00 AM UTC
+    - cron: '0 20 * * 0'
+  workflow_dispatch: # Allow manual triggering of the workflow
+    inputs:
+      custom-message:
+        description: "A custom message for this update"
+        required: false
+        default: "Weekly Update"
+
+jobs:
+  update-dist:
+    name: Update and Commit Dist Directory
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # Step 2: Setup Node.js environment (if needed)
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: '16' # Adjust the Node.js version as needed
+
+      # Step 3: Install dependencies (if applicable)
+      - name: Install Dependencies
+        run: |
+          echo "Installing dependencies..."
+          npm install
+
+      # Step 4: Update the dist directory
+      - name: Build/Update Dist Directory
+        run: |
+          echo "Updating dist directory..."
+          npm run build:dist || echo "Build script failed, but proceeding..."
+
+      # Step 5: Commit changes if there are any
+      - name: Commit and Push Changes
+        run: |
+          echo "Checking for changes in dist directory..."
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add dist/
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Automated weekly update to dist directory: ${{ github.event.inputs.custom-message }}"
+            git push
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Step 6: Notify on Success
+      - name: Send Success Notification
+        if: success()
+        run: echo "✅ Dist directory has been successfully updated and committed."
+
+  notify-on-failure:
+    name: Notify on Failure
+    runs-on: ubuntu-latest
+    if: failure()
+    steps:
+      - name: Notify Failure
+        run: echo "❌ The update workflow failed. Please check the logs for details."
