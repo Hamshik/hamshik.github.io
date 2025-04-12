@@ -1,0 +1,44 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Architectures: all
+Codename: stable
+Components: main
+Date: Fri, 11 Apr 2025 15:13:57 +0000
+Description: This file is for release file
+Label: GPG files
+Origin: hamshik.github.io
+Suite: stable
+MD5Sum:
+ 5dd1cae665e0a4ff93e8812c43c6c1b7              191 Release
+ b34d305a890df15ba606032de764fbc3              365 main/binary-all/Packages
+ b34d305a890df15ba606032de764fbc3              365 main/binary-all/Packages.gz
+SHA1:
+ 88fa0019bcae72afde59a7f17d8a75e4e34e3878              191 Release
+ cd32137c8cef4609edd7a08181a1050c64365655              365 main/binary-all/Packages
+ cd32137c8cef4609edd7a08181a1050c64365655              365 main/binary-all/Packages.gz
+SHA256:
+ e33ba769ff17c512f07b738aaa4701a3cfeb351994f0fa5d781bb5296704c37f              191 Release
+ 14bb3731c7db59e50f3157c8fd84e518a9d6c7ee1d2623a5decd5189e7cfd406              365 main/binary-all/Packages
+ 14bb3731c7db59e50f3157c8fd84e518a9d6c7ee1d2623a5decd5189e7cfd406              365 main/binary-all/Packages.gz
+SHA512:
+ 50085496ba63d425569c0ece4f38d2c80bf6a3e0815af6144c7abd3ace6f6bca1f1dbe88110868da9be279cfb7311df6da565f6010b6aeb6cfa672c3fc8ba24b              191 Release
+ 69f80937e6362109b140a031d613565431c4b891160c37a77f7ca1c440b00e27768ef6a9fb0ce0fc15ebc8cca74fa030e096039f8e259d9cc93cb4fba9b9ecf8              365 main/binary-all/Packages
+ 69f80937e6362109b140a031d613565431c4b891160c37a77f7ca1c440b00e27768ef6a9fb0ce0fc15ebc8cca74fa030e096039f8e259d9cc93cb4fba9b9ecf8              365 main/binary-all/Packages.gz
+-----BEGIN PGP SIGNATURE-----
+
+iQJLBAEBCgA1FiEEQvvdVniKBcO0HjOXug5kZhg8lygFAmf5OHIXHGhhbXNoaWsu
+c2J2M0BnbWFpbC5jb20ACgkQug5kZhg8lyijqA/+I2RUZXhOiAdJYLo/ByY/evRW
+K4AT2Q9c4f1DbW0+LCZ7kJR2Wt3nZn+MTPAu7hH9E9CV0x1W51FaD6UGo2X95IVe
+KXVmL9DFHLEve23KoXY1qXCa8WsBVVvcXCPWRjg8qUqO8r6R8YLFqPO9faReKKne
+i2LGfGc3AHEhkttnX/30oND9uMK7Si9s2R0T2r6LmbJ39Y3RWf1tvsWfMmqHLnZp
+RbD0OKgp5hqG1BJ7oDeGkHJJ+j886jnD+UBNPJQU/79qScxkeNM2QsJZGCz9pRIz
+hBeuDy9BHuIrZQZx2pICGf4+CQdkmSFYSNAx/781Xhp5Xj8hESb6A/fyx8G5dKy7
+lQEsr6m9q7LEeVIsWsG9jftCK7v43eTtHuLt6KePeTVgwjpcenq5iSLheByj5otw
+yRnQo6iH6CdR0vqJvNFNo4TPzWPA8P3GrHVg5mwXrwm2raESZMOJvzJ/tud5tIy9
+0S2SfC5yreoUbRtjPSJub/W0IPDW8xQtk46vCADFJI33LlTdJDk/j/jkUlsf/z6R
+VGzQTantGG/mKCake2eHRGWcFqp0t5q5dUp+Y/bPc/AVkNaEJtDCngKbu1hdaXB/
+myD3/G4Fo/GPBaj17sgcsNfRVAFtY6tVMaibo0Ea6LGpgHZXmDnwaTKwi80ufn5Y
+ZHYo3nYKwbnQjsMnYGQ=
+=lzFG
+-----END PGP SIGNATURE-----

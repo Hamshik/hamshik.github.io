@@ -1,0 +1,11 @@
+Source: debfile
+Section: utils
+Priority: optional
+Maintainer: hamshik suvarna <hamshik.sbv3@gmail.com>
+Standards-Version: 3.9.6
+Homepage: https://hamshik.github.io.
+
+Package: debfile
+Architecture: all
+Depends: ${misc:Depends}
+Description: This file is only for package.gz. About this file is in homepage

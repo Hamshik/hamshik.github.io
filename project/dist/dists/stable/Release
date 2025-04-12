@@ -1,0 +1,24 @@
+Architectures: all
+Codename: stable
+Components: main
+Date: Fri, 11 Apr 2025 15:13:57 +0000
+Description: This file is for release file
+Label: GPG files
+Origin: hamshik.github.io
+Suite: stable
+MD5Sum:
+ 5dd1cae665e0a4ff93e8812c43c6c1b7              191 Release
+ b34d305a890df15ba606032de764fbc3              365 main/binary-all/Packages
+ b34d305a890df15ba606032de764fbc3              365 main/binary-all/Packages.gz
+SHA1:
+ 88fa0019bcae72afde59a7f17d8a75e4e34e3878              191 Release
+ cd32137c8cef4609edd7a08181a1050c64365655              365 main/binary-all/Packages
+ cd32137c8cef4609edd7a08181a1050c64365655              365 main/binary-all/Packages.gz
+SHA256:
+ e33ba769ff17c512f07b738aaa4701a3cfeb351994f0fa5d781bb5296704c37f              191 Release
+ 14bb3731c7db59e50f3157c8fd84e518a9d6c7ee1d2623a5decd5189e7cfd406              365 main/binary-all/Packages
+ 14bb3731c7db59e50f3157c8fd84e518a9d6c7ee1d2623a5decd5189e7cfd406              365 main/binary-all/Packages.gz
+SHA512:
+ 50085496ba63d425569c0ece4f38d2c80bf6a3e0815af6144c7abd3ace6f6bca1f1dbe88110868da9be279cfb7311df6da565f6010b6aeb6cfa672c3fc8ba24b              191 Release
+ 69f80937e6362109b140a031d613565431c4b891160c37a77f7ca1c440b00e27768ef6a9fb0ce0fc15ebc8cca74fa030e096039f8e259d9cc93cb4fba9b9ecf8              365 main/binary-all/Packages
+ 69f80937e6362109b140a031d613565431c4b891160c37a77f7ca1c440b00e27768ef6a9fb0ce0fc15ebc8cca74fa030e096039f8e259d9cc93cb4fba9b9ecf8              365 main/binary-all/Packages.gz

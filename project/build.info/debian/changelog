@@ -1,0 +1,5 @@
+debfile (1.0-1) stable; urgency=medium
+
+  * Initial release. (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Hamshik Suvarna <hamshik.sbv3@gmail.com>  Fri, 11 Apr 2025 19:36:37 +0530

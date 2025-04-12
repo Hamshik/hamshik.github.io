@@ -1,0 +1,15 @@
+Source: debfile
+Section: utils
+Priority: optional
+Maintainer: Hamshik Suvarna <hamshik.sbv3@gmail.com>
+Rules-Requires-Root: no
+Standards-Version: 4.6.2
+Homepage: https://github.com/hamshik/hamshik.github.io/build.info/debfile_1.0.orig.tar.xz
+#Vcs-Browser: https://salsa.debian.org/debian/debfile
+#Vcs-Git: https://salsa.debian.org/debian/debfile.git
+
+Package: debfile
+Architecture: all
+Depends:
+ ${misc:Depends},
+Description: none

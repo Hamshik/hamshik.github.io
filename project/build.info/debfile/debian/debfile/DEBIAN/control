@@ -1,0 +1,9 @@
+Package: debfile
+Version: 1.0-1
+Architecture: all
+Maintainer: hamshik suvarna <hamshik.sbv3@gmail.com>
+Installed-Size: 7
+Section: utils
+Priority: optional
+Homepage: https://hamshik.github.io.
+Description: This file is only for package.gz. About this file is in homepage

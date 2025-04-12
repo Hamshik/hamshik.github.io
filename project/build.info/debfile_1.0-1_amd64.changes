@@ -1,0 +1,34 @@
+Format: 1.8
+Date: Fri, 11 Apr 2025 19:36:37 +0530
+Source: debfile
+Binary: debfile
+Architecture: source all
+Version: 1.0-1
+Distribution: stable
+Urgency: medium
+Maintainer: hamshik suvarna <hamshik.sbv3@gmail.com>
+Changed-By: Hamshik Suvarna <hamshik.sbv3@gmail.com>
+Description:
+ debfile    - This file is only for package.gz. About this file is in homepage
+Changes:
+ debfile (1.0-1) stable; urgency=medium
+ .
+   * Initial release. (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+Checksums-Sha1:
+ 4420f05c17e9bc6ca64064f3647cb0d742a16fba 756 debfile_1.0-1.dsc
+ f2d70a3137819545d4f1399505623f005d04c559 176 debfile_1.0.orig.tar.xz
+ 707c0014c48a08965139f0af2a0516ba7ee2c826 676 debfile_1.0-1.debian.tar.xz
+ d5509838364a95cf8b79951bc924605472c840ac 1124 debfile_1.0-1_all.deb
+ 8d0e7d622a5b4e72f9847ea2f6cbac8a60595a71 4311 debfile_1.0-1_amd64.buildinfo
+Checksums-Sha256:
+ 92510067f6542f9e427c3dc04a280548f5b255f62de33da6c7d5b25128d78390 756 debfile_1.0-1.dsc
+ ad1c926480fb338eb17f844203dba1701f27d51c7ae8095d05be6944301acd21 176 debfile_1.0.orig.tar.xz
+ 268cfd002418ba3a0cbe21c56a30b86aeb6a71a9a10ed25e5ae54013f68c357b 676 debfile_1.0-1.debian.tar.xz
+ 07741d76f57b9de7c968670db6859c50b2478ae02f4f061630b27bebc1416036 1124 debfile_1.0-1_all.deb
+ 9c3a27532072b52092039633a1e51e2df2c125caef701a8c9313d73e9bd8d928 4311 debfile_1.0-1_amd64.buildinfo
+Files:
+ 405fec75e59e9e8af35de66509fb9de3 756 utils optional debfile_1.0-1.dsc
+ 7bd42007ab13f0a1d6872fcd17d5afa8 176 utils optional debfile_1.0.orig.tar.xz
+ 8cf7f944275d9b29be39f94c1bdee720 676 utils optional debfile_1.0-1.debian.tar.xz
+ a192cd83b8d47876a9ea1b61be3ea8f5 1124 utils optional debfile_1.0-1_all.deb
+ 39fcd080f3b18b9be92ee4200998511a 4311 utils optional debfile_1.0-1_amd64.buildinfo
