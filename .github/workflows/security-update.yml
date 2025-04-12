@@ -1,0 +1,49 @@
+name: Security Updates for dist Directory
+
+on:
+  schedule:
+    # Run every Monday at 2:00 AM UTC
+    - cron: '0 2 * * 1'
+  workflow_dispatch: # Allow manual triggering of the workflow
+
+jobs:
+  update-security:
+    name: Update dist Directory with Security Patches
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # Step 2: Setup GPG for signing
+      - name: Setup GPG Keys
+        run: |
+          echo "${{ secrets.GPG_PRIVATE_KEY }}" | gpg --import
+          echo "${{ secrets.GPG_KEY_PASSPHRASE }}" | gpg --passphrase-fd 0
+
+      # Step 3: Update Package Lists and Apply Security Updates
+      - name: Update Security Packages
+        run: |
+          sudo apt update
+          sudo apt upgrade -y
+          dpkg-scanpackages pool/main > dists/stable/main/binary-all/Packages
+          gzip -9 < dists/stable/main/binary-all/Packages > dists/stable/main/binary-all/Packages.gz
+
+      # Step 4: Regenerate Release Files
+      - name: Regenerate Release and Signature Files
+        run: |
+          apt-ftparchive release dists/stable > dists/stable/Release
+          gpg --default-key "${{ secrets.GPG_KEY_EMAIL }}" -abs -o dists/stable/Release.gpg dists/stable/Release
+          gpg --default-key "${{ secrets.GPG_KEY_EMAIL }}" --clearsign -o dists/stable/InRelease dists/stable/Release
+
+      # Step 5: Commit and Push Changes
+      - name: Commit and Push Changes
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add dist/
+          git commit -m "Weekly security updates to dist directory"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
