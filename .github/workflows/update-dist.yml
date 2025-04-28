@@ -45,8 +45,11 @@ jobs:
           mkdir -p $WORKING_DIRECTORY
           mkdir -p $WORKFLOW_DIR
           chmod -R 755 $WORKFLOW_DIR
-          rm -rf $WORKING_DIRECTORY/dist # Clear destination directory first to avoid conflicts
-          mv dist/ $WORKING_DIRECTORY/  # Move files/directories
+          # Clear destination directory first to avoid conflicts
+          rm -rf $WORKING_DIRECTORY/dist 
+          rm -rf $WORKING_DIRECTORY/.github
+          # Move files/directories
+          mv dist/ $WORKING_DIRECTORY/  
           mv .github/ $WORKING_DIRECTORY/
           echo "Workspace and workflow directory are ready."
 
