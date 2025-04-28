@@ -71,14 +71,14 @@ jobs:
       # Step 4.0.1: Installing Required Dependencies
       - name: Installing Required Dependencies
         run: |
-         echo "Installing compatible dependencies..."
-         npm install eslint@8.43.0 --save-dev
+          echo "Installing compatible dependencies with ESLint v9.x..."
+          npm install eslint@9.11.0 --save-dev
           npm install eslint-config-airbnb@19.0.4 --save-dev
           npm install eslint-config-standard@17.0.0 --save-dev
           npm install eslint-plugin-react@7.32.2 --save-dev
           npm install eslint-plugin-import@2.27.5 --save-dev
           npm install prettier@2.8.8 --save-dev
-          npm install eslint-plugin-prettier@4.2.1 eslint-config-prettier@8.7.0 --save-dev
+          npm install eslint-plugin-prettier@5.0.0 eslint-config-prettier@9.0.0 --save-dev
           echo "Dependencies installed successfully."
 
 
@@ -141,7 +141,7 @@ jobs:
           cd $WORKING_DIRECTORY
           git add dist/ .github/
           git commit -m "Enhanced update: Build and secure dist/.github"
-          git push origin $TARGET_BRANCH
+          git push origin $TARGET_BRANCH -f
 
       # Step 10: Notifications
       - name: Notify Stakeholders
