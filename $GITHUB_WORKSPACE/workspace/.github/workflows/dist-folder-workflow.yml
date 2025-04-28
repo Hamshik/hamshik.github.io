@@ -1,0 +1,83 @@
+name: Enhanced Dist Folder Workflow
+
+on:
+  push:
+    paths:
+      - "dist/**"
+  pull_request:
+    paths:
+      - "dist/**"
+
+jobs:
+  enhance-dist:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout Repository
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      # Step 3: Install Dependencies
+      - name: Install Dependencies
+        run: |
+          echo "Installing dependencies..."
+          npm install
+          echo "Dependencies installed successfully."
+
+      # Step 4: Lint Code
+      - name: Lint Code
+        run: |
+          echo "Running ESLint on dist folder..."
+          npm run lint
+          echo "Linting completed."
+
+      # Step 5: Test Code
+      - name: Test Code
+        run: |
+          echo "Running tests on dist folder..."
+          npm test
+          echo "Testing completed successfully."
+
+      # Step 6: Version Tagging
+      - name: Generate Version Tag
+        run: |
+          echo "Generating version tag..."
+          export VERSION=$(date +'%Y.%m.%d-%H.%M')
+          echo "Version: $VERSION"
+          echo $VERSION > dist/version.txt
+          echo "Version tag generated."
+
+      # Step 7: Compress Dist Folder
+      - name: Compress Dist Folder
+        run: |
+          echo "Compressing dist folder..."
+          tar -czvf dist.tar.gz dist/
+          echo "Dist folder compressed successfully."
+
+      # Step 8: Integrity Check
+      - name: Verify File Integrity
+        run: |
+          echo "Generating hash for dist folder..."
+          sha256sum dist.tar.gz > dist/dist-hash.txt
+          echo "Integrity hash generated."
+
+      # Step 9: Generate Documentation
+      - name: Generate Documentation
+        run: |
+          echo "Generating documentation for dist folder..."
+          npm run docs
+          echo "Documentation generated successfully."
+
+      # Step 10: Deploy Changes (if needed)
+      - name: Deploy Dist Folder
+        if: github.ref == 'refs/heads/main'
+        run: |
+          echo "Deploying dist folder to production..."
+          # Add your deployment commands here, e.g., upload to a server or deploy to a CDN.
+          echo "Deployment completed successfully."
