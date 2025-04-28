@@ -41,13 +41,14 @@ jobs:
       # Step 2: Set Up Environment and /workflow Directory
       - name: Set Up Workspace and Workflow Directory
         run: |
-            echo "Preparing custom working directory..."
-            mkdir -p $WORKING_DIRECTORY
-            mkdir -p $WORKFLOW_DIR
-            chmod -R 755 $WORKFLOW_DIR
-            mv dist/ $WORKING_DIRECTORY/
-            mv .github/ $WORKING_DIRECTORY/
-            echo "Workspace and workflow directory are ready."
+          echo "Preparing custom working directory..."
+          mkdir -p $WORKING_DIRECTORY
+          mkdir -p $WORKFLOW_DIR
+          chmod -R 755 $WORKFLOW_DIR
+          rm -rf $WORKING_DIRECTORY/dist # Clear destination directory first to avoid conflicts
+          mv dist/ $WORKING_DIRECTORY/  # Move files/directories
+          mv .github/ $WORKING_DIRECTORY/
+          echo "Workspace and workflow directory are ready."
 
       # Step 3: Security Dependency Check
       - name: Set Node.js Version
