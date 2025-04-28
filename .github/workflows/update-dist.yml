@@ -50,10 +50,11 @@ jobs:
             echo "Workspace and workflow directory are ready."
 
       # Step 3: Security Dependency Check
-      - name: Run Dependency Scanning
+      - name: Set Node.js Version
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+           node-version: '18'
+
       - name: Audit Dependencies for Security Issues
         run: |
           echo "Auditing dependencies for known vulnerabilities..."
@@ -76,6 +77,13 @@ jobs:
           npm install eslint-plugin-prettier eslint-config-prettier --save-dev
           echo "Confirming whether required dependencies are installed..."
           npx eslint --init || echo "Dependencies installed successfully."
+
+      #Step 4.0.2: Reinitialize ESLint
+      - name: Initialize ESLint
+        run: |
+         echo "Initializing ESLint..."
+         npx eslint --init
+         echo "ESLint initialization completed."
 
       # Step 4: Linting JavaScript
       - name: Lint JavaScript Files (dist/)
