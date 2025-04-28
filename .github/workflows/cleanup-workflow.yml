@@ -1,0 +1,21 @@
+name: Automated Cleanup Workflow
+
+on:
+  schedule:
+    - cron: "0 3 * * *" # Runs daily at 3 AM UTC
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout Repository
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Step 2: Remove Old Backups
+      - name: Clean Up Old Files
+        run: |
+          echo "Removing backups and logs older than 7 days..."
+          find .github/ dist/ -type f \( -name "*.gz.gpg" -o -name "*.log" \) -mtime +7 -exec rm -f {} \;
+          echo "Cleanup completed successfully."
