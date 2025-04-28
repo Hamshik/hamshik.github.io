@@ -11,7 +11,7 @@ jobs:
     steps:
       # Step 1: Checkout Repository
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Step 2: Update Dependencies
       - name: Install Dependencies Updater
