@@ -1,0 +1,104 @@
+name: Repository Security Workflow
+
+on:
+  push:
+    paths:
+      - ".github/**"
+      - "dist/**"
+  schedule:
+    - cron: "0 22 * * *" # Runs daily at 10 PM UTC
+
+jobs:
+  security-checks:
+    runs-on: ubuntu-latest
+
+    env:
+      GPG_PASSWORD: ${{ secrets.GPG_PASSWORD }}
+
+    permissions:
+      actions: write
+      contents: write
+      security-events: write
+
+    steps:
+      # Step 1: Checkout Repository
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Step 2: Fix Directory Permissions
+      - name: Fix Permissions
+        run: |
+          echo "Fixing permissions for .github and dist directories..."
+          sudo chmod -R u+rwX .github dist
+          sudo chown -R $USER:$USER .github dist
+          echo "Permissions fixed successfully."
+
+      # Step 3: Validate GPG Signatures
+      - name: Validate GPG Signatures
+        run: |
+          echo "Validating GPG signatures..."
+          for file in dist/*; do
+            if [[ "$file" == *.gpg ]]; then
+              gpg --batch --passphrase "${GPG_PASSWORD}" --verify "$file" \
+                && echo "Valid signature for $file" \
+                || echo "Invalid signature detected in $file"
+            fi
+          done
+          echo "GPG signature validation completed."
+
+      # Step 4: Perform Security Scan
+      - name: Security Scan
+        run: |
+          echo "Installing and running ClamAV to scan for vulnerabilities..."
+          sudo apt-get update
+          sudo apt-get install -y clamav
+          clamscan -r .github/ dist/
+          echo "Security scan completed successfully."
+
+      # Step 5: Create Backup
+      - name: Create Backup
+        run: |
+          echo "Creating a compressed backup of .github and dist directories..."
+          tar -czvf backup.tar.gz .github dist
+          echo "Backup created: backup.tar.gz."
+
+      # Step 6: Encrypt Backup
+      - name: Encrypt Backup
+        run: |
+          echo "Encrypting the backup file with GPG..."
+          gpg --symmetric --cipher-algo AES256 --batch --passphrase "${GPG_PASSWORD}" backup.tar.gz
+          rm -f backup.tar.gz
+          echo "Backup file encrypted as: backup.tar.gz.gpg."
+
+      # Step 7: Commit and Push Encrypted Backup to Repository
+      - name: Commit and Push Encrypted Backup
+        run: |
+          echo "Staging and committing the encrypted backup..."
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          mv backup.tar.gz.gpg .github/
+          cd .github/
+          git add backup.tar.gz.gpg
+          git commit -m "Add encrypted backup of .github and dist directories"
+          git push origin main
+          echo "Encrypted backup committed and pushed to repository successfully."
+
+      # Step 8: Generate Audit Logs
+      - name: Generate Audit Logs
+        run: |
+          echo "Generating audit logs for .github and dist directories..."
+          git log -p .github/ dist/ > audit.log
+          echo "Audit logs generated."
+
+      # Step 9: Commit Audit Logs
+      - name: Commit Audit Logs
+        run: |
+          echo "Committing audit logs to the repository..."
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          mv audit.log .github/
+          cd .github/
+          git add audit.log
+          git commit -m "Audit logs generated"
+          git push origin main
+          echo "Audit logs committed and pushed successfully."
