@@ -1,0 +1,19 @@
+name: Notification Workflow
+
+on:
+  workflow_run:
+    workflows: ["Repository Security Workflow", "Update Distribution Workflow"]
+    types:
+      - completed
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send Notification
+        run: |
+          echo "Sending notification to Slack or email..."
+          # Replace with your notification command
+          echo "Workflow completed successfully!" | mail -s "Workflow Notification" hamshik.sbv3@gmail.com
+          echo "Notification sent!"
