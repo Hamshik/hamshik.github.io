@@ -1,0 +1,33 @@
+name: Dependency Updates Workflow
+
+on:
+  schedule:
+    - cron: "0 1 * * *" # Runs daily at 1 AM UTC
+
+jobs:
+  dependency-updates:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout Repository
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Step 2: Update Dependencies
+      - name: Install Dependencies Updater
+        run: |
+          echo "Installing dependency update tools..."
+          sudo apt-get update
+          sudo apt-get install -y software-properties-common
+          echo "Dependency update tools installed."
+
+      # Step 3: Commit Updates
+      - name: Commit and Push Updates
+        run: |
+          echo "Committing dependency updates..."
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add .
+          git commit -m "Updated dependencies"
+          git push origin main
+          echo "Dependency updates committed successfully."

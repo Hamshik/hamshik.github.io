@@ -1,0 +1,3 @@
+debfile admin require
+debfile32 admin require
+debfile64 admin require
