@@ -1,0 +1,21 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "es2022": true
+  },
+  "extends": ["eslint:recommended", "prettier"],
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "import", "prettier"],
+  "rules": {
+    "semi": ["error", "always"],                    // Require semicolons
+    "no-console": "warn",                          // Warn for console statements
+    "quotes": ["error", "double"],                 // Enforce double quotes
+    "react/prop-types": "off",                     // Disable prop-types validation for React
+    "import/no-unresolved": "error",               // Enforce resolving imports correctly
+    "prettier/prettier": "error"                   // Enforce Prettier formatting as ESLint errors
+  }
+}
