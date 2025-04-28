@@ -71,16 +71,14 @@ jobs:
       # Step 4.0.1: Installing Required Dependencies
       - name: Installing Required Dependencies
         run: |
-          echo "Installing compatible dependencies with ESLint v9.x and Prettier v3.x..."
-          npm install eslint@^9.25.1 --save-dev
-          npm install eslint-config-airbnb@19.0.4 --save-dev
-          npm install eslint-plugin-react@^8.11.0 --save-dev
-          npm install eslint-plugin-import@^2.27.5 --save-dev
-          npm install prettier@^3.0.2 --save-dev
-          npm install eslint-plugin-prettier@^5.0.0 eslint-config-prettier@^9.0.0 --save-dev
-          echo "Dependencies installed successfully."
-
-
+            echo "Installing compatible dependencies with ESLint v9.x and Prettier v3.x..."
+            npm install eslint@^9.25.1 --save-dev
+            npm install eslint-config-airbnb@19.0.4 --save-dev
+            npm install eslint-plugin-react@^7.28.0 --save-dev
+            npm install eslint-plugin-import@^2.27.5 --save-dev
+            npm install prettier@^3.0.2 --save-dev
+            npm install eslint-plugin-prettier@^5.0.0 eslint-config-prettier@^9.0.0 --save-dev
+            echo "Dependencies installed successfully."
 
       # Step 4.0.2: Reinitialize ESLint
       - name: Initialize ESLint
