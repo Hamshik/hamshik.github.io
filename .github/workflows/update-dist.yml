@@ -71,15 +71,16 @@ jobs:
       # Step 4.0.1: Installing Required Dependencies
       - name: Installing Required Dependencies
         run: |
-          echo "Installing compatible dependencies..."
-          npm install eslint@latest --save-dev
-          npm install eslint-config-airbnb@latest --save-dev
-          npm install eslint-config-standard --save-dev
-          npm install eslint-plugin-react@latest --save-dev
-          npm install eslint-plugin-import@latest --save-dev
-          npm install prettier --save-dev
-          npm install eslint-plugin-prettier eslint-config-prettier --save-dev
+         echo "Installing compatible dependencies..."
+         npm install eslint@8.43.0 --save-dev
+          npm install eslint-config-airbnb@19.0.4 --save-dev
+          npm install eslint-config-standard@17.0.0 --save-dev
+          npm install eslint-plugin-react@7.32.2 --save-dev
+          npm install eslint-plugin-import@2.27.5 --save-dev
+          npm install prettier@2.8.8 --save-dev
+          npm install eslint-plugin-prettier@4.2.1 eslint-config-prettier@8.7.0 --save-dev
           echo "Dependencies installed successfully."
+
 
       # Step 4.0.2: Reinitialize ESLint
       - name: Initialize ESLint
