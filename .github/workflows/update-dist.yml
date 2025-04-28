@@ -29,7 +29,7 @@ jobs:
       WORKING_DIRECTORY: $GITHUB_WORKSPACE/workspace
       TARGET_BRANCH: main
       SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-      WORKFLOW_DIR: /workflow
+      WORKFLOW_DIR: /home/runner/work/hamshik/hamshik.github.io/workflow
 
     steps:
       # Step 1: Checkout Repository
@@ -41,13 +41,13 @@ jobs:
       # Step 2: Set Up Environment and /workflow Directory
       - name: Set Up Workspace and Workflow Directory
         run: |
-          echo "Preparing custom working directory at $WORKING_DIRECTORY..."
-          mkdir -p $WORKING_DIRECTORY
-          mkdir -p $WORKFLOW_DIR
-          chmod -R 755 $WORKFLOW_DIR
-          mv dist/ $WORKING_DIRECTORY/
-          mv .github/ $WORKING_DIRECTORY/
-          echo "Workspace and /workflow directory are ready."
+            echo "Preparing custom working directory..."
+            mkdir -p $WORKING_DIRECTORY
+            mkdir -p /home/runner/work/hamshik/hamshik.github.io/workflow
+            chmod -R 755 /home/runner/work/hamshik/hamshik.github.io/workflow
+            mv dist/ $WORKING_DIRECTORY/
+            mv .github/ $WORKING_DIRECTORY/
+            echo "Workspace and workflow directory are ready."
 
       # Step 3: Security Dependency Check
       - name: Run Dependency Scanning
