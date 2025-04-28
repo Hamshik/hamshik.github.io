@@ -65,18 +65,17 @@ jobs:
         continue-on-error: true
 
       # Step 4.0.1: Installing Required Dependencies
-      - name: Installing Required Dependencies for Linting
+      - name: Installing Required Dependencies
         run: |
-          echo "Installing required dependencies for linting JavaScript..."
-          npm install eslint --save-dev
-          npm install eslint-config-airbnb --save-dev
+          echo "Installing compatible dependencies..."
+          npm install eslint@8.2.0 --save-dev
+          npm install eslint-config-airbnb@19.0.4 --save-dev
           npm install eslint-config-standard --save-dev
           npm install eslint-plugin-react --save-dev
           npm install eslint-plugin-import --save-dev
           npm install prettier --save-dev
           npm install eslint-plugin-prettier eslint-config-prettier --save-dev
-          echo "Confirming whether required dependencies are installed..."
-          npx eslint --init || echo "Dependencies installed successfully."
+          echo "Dependencies installed successfully."
 
       #Step 4.0.2: Reinitialize ESLint
       - name: Initialize ESLint
