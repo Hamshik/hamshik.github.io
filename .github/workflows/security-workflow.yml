@@ -76,12 +76,22 @@ jobs:
           echo "Staging and committing the encrypted backup..."
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
+          
+          # Ensure the latest changes are pulled before pushing
+          echo "Pulling latest changes from remote repository..."
+          git pull origin main --rebase || echo "Git pull failed but continuing."
+          
+          # Move and add backup file
           mv backup.tar.gz.gpg .github/
           cd .github/
           git add backup.tar.gz.gpg
-          git commit -m "Add encrypted backup of .github and dist directories"
-          git push origin main
-          echo "Encrypted backup committed and pushed to repository successfully."
+
+          # Commit and push changes
+          echo "Committing encrypted backup..."
+          git commit -m "Add encrypted backup of .github and dist directories" || echo "No changes to commit."
+          echo "Pushing changes to remote repository..."
+          git push origin main || echo "Git push failed. Please resolve conflicts manually."
+          echo "Encrypted backup committed and pushed successfully."
 
       # Step 8: Generate Audit Logs
       - name: Generate Audit Logs
@@ -96,9 +106,19 @@ jobs:
           echo "Committing audit logs to the repository..."
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
+          
+          # Ensure the latest changes are pulled before pushing audit logs
+          echo "Pulling latest changes from remote repository..."
+          git pull origin main --rebase || echo "Git pull failed but continuing."
+          
+          # Move and add audit log
           mv audit.log .github/
           cd .github/
           git add audit.log
-          git commit -m "Audit logs generated"
-          git push origin main
+
+          # Commit and push changes
+          echo "Committing audit logs..."
+          git commit -m "Audit logs generated" || echo "No changes to commit."
+          echo "Pushing audit logs to remote repository..."
+          git push origin main || echo "Git push failed. Please resolve conflicts manually."
           echo "Audit logs committed and pushed successfully."
