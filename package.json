@@ -1,0 +1,22 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint dist/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://hamshik.github.io"
+  },
+  "keywords": [
+    "hamshik"
+  ],
+  "author": "Hamshik Suvarna",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
