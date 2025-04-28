@@ -43,8 +43,8 @@ jobs:
         run: |
             echo "Preparing custom working directory..."
             mkdir -p $WORKING_DIRECTORY
-            mkdir -p /home/runner/work/hamshik/hamshik.github.io/workflow
-            chmod -R 755 /home/runner/work/hamshik/hamshik.github.io/workflow
+            mkdir -p $WORKFLOW_DIR
+            chmod -R 755 $WORKFLOW_DIR
             mv dist/ $WORKING_DIRECTORY/
             mv .github/ $WORKING_DIRECTORY/
             echo "Workspace and workflow directory are ready."
@@ -53,7 +53,7 @@ jobs:
       - name: Set Node.js Version
         uses: actions/setup-node@v3
         with:
-           node-version: '18'
+          node-version: '18'
 
       - name: Audit Dependencies for Security Issues
         run: |
@@ -77,12 +77,12 @@ jobs:
           npm install eslint-plugin-prettier eslint-config-prettier --save-dev
           echo "Dependencies installed successfully."
 
-      #Step 4.0.2: Reinitialize ESLint
+      # Step 4.0.2: Reinitialize ESLint
       - name: Initialize ESLint
         run: |
-         echo "Initializing ESLint..."
-         npx eslint --init
-         echo "ESLint initialization completed."
+          echo "Initializing ESLint..."
+          npx eslint --init
+          echo "ESLint initialization completed."
 
       # Step 4: Linting JavaScript
       - name: Lint JavaScript Files (dist/)
@@ -109,7 +109,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y clamav
           clamscan -r $WORKING_DIRECTORY > $WORKFLOW_DIR/security-scan.log
-          echo "Security scan completed. Log stored in /workflow."
+          echo "Security scan completed. Log stored in $WORKFLOW_DIR."
 
       # Step 8: Detect Changes
       - name: Detect Changes
@@ -141,14 +141,16 @@ jobs:
       # Step 10: Notifications
       - name: Notify Stakeholders
         run: |
-          if [ -z "${{ steps.detect_changes.outputs.changes }}" ]; then
+          CHANGES="${{ steps.detect_changes.outputs.changes }}"
+          if [ -z "$CHANGES" ]; then
             curl -X POST -H "Content-Type: application/json" \
               -d '{"text":"No updates for dist or .github directories."}' \
-              $SLACK_WEBHOOK
+              $SLACK_WEBHOOK || echo "Failed to send Slack notification for no updates."
           else
             curl -X POST -H "Content-Type: application/json" \
               -d '{"text":"Enhanced update: dist and .github directories have been updated and secured."}' \
-              $SLACK_WEBHOOK
+              $SLACK_WEBHOOK || echo "Failed to send Slack notification for updates."
+          fi
 
       # Step 11: Generate and Upload Logs
       - name: Generate Audit Logs
