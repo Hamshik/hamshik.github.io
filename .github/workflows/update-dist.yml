@@ -72,8 +72,7 @@ jobs:
       - name: Installing Required Dependencies
         run: |
           echo "Installing compatible dependencies with ESLint v9.x..."
-          npm install eslint@9.11.0 --save-dev
-          npm install eslint-config-airbnb@19.0.4 --save-dev
+          npm install eslint@9.25.1 --save-dev
           npm install eslint-config-standard@17.0.0 --save-dev
           npm install eslint-plugin-react@7.32.2 --save-dev
           npm install eslint-plugin-import@2.27.5 --save-dev
